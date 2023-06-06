@@ -5,14 +5,14 @@ import {
 const folderPath = './src/fs/files';
 
 const list = async () => {
-    const listOfFiles = await fs.readdir(folderPath)
-        .catch(() => {
-            throw new Error(`Can't find folder! FS operation failed.`);
+    try {
+        const listOfFiles = await fs.readdir(folderPath)
+        listOfFiles.map((file, idx) => {
+            console.log(`${idx+1} -------> ${file}`);
         });
-    listOfFiles.map((file, idx) => {
-        console.log(`${idx+1} -------> ${file}`);
-    })
-    return listOfFiles;
+    } catch (err) {
+        throw new Error(err);
+    }
 };
 
 await list();

@@ -6,24 +6,23 @@ const folderPath = './src/fs/files';
 const folderToCopyPath = './src/fs/files_copy';
 
 const readFolder = async () => {
-    const res = await fs.readdir(folderPath)
-        .catch(() => {
-            throw new Error(`Can't find folder! FS operation failed.`);
-        });
-    return res;
+    try {
+        const res = await fs.readdir(folderPath);
+        return res;
+    } catch (err) {
+        throw new Error(err);
+    }
 }
 
 const createCopyFolder = async () => {
-    const res = fs.mkdir(folderToCopyPath, {
+    try {
+        fs.mkdir(folderToCopyPath, {
             recursive: false
         })
-        .then(() => {
-            return true
-        })
-        .catch(() => {
-            return false;
-        })
-    return res;
+        return true;
+    } catch (err) {
+        return false;
+    }
 };
 
 const copy = async () => {

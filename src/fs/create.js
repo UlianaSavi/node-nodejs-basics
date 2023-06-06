@@ -1,14 +1,16 @@
-import { promises as fs } from 'fs';
+import {
+    promises as fs
+} from 'fs';
 
 const filePath = './src/fs/files/fresh.txt';
 
 const check = async () => {
-    const res = fs.access(filePath, fs.constants.F_OK)
-        .then(() => true)
-        .catch(() => {
-            return false;
-        })
-    return res;
+    try {
+        await fs.access(filePath, fs.constants.F_OK)
+        return true;
+    } catch (err) {
+        return false;
+    }
 };
 
 const create = async () => {

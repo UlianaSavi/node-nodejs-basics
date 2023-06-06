@@ -7,10 +7,12 @@ const badName = 'wrongFilename.txt'
 const goodName = 'properFilename.md'
 
 const rename = async () => {
-    fs.rename(`${path}/${badName}`, `${path}/${goodName}`).catch((err) => {
+    try {
+        await fs.rename(`${path}/${badName}`, `${path}/${goodName}`)
+        console.log('File renamed!');
+    } catch (err) {
         throw new Error(err);
-    });
-    console.log('File renamed!');
+    }
 };
 
 await rename();
