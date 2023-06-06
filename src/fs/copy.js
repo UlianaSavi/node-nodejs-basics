@@ -6,9 +6,9 @@ const folderPath = './src/fs/files';
 const folderToCopyPath = './src/fs/files_copy';
 
 const readFolder = async () => {
-    const res = fs.readdir(folderPath)
+    const res = await fs.readdir(folderPath)
         .catch(() => {
-            throw new Error(`Cant find folder! FS operation failed.`);
+            throw new Error(`Can't find folder! FS operation failed.`);
         });
     return res;
 }
