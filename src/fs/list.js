@@ -9,9 +9,9 @@ const list = async () => {
         .catch(() => {
             throw new Error(`Can't find folder! FS operation failed.`);
         });
-        listOfFiles.map((file, idx) => {
-            console.log(`${idx+1} -------> ${file}`);
-        })
+    listOfFiles.map((file, idx) => {
+        console.log(`${idx+1} -------> ${file}`);
+    })
     return listOfFiles;
 };
 
