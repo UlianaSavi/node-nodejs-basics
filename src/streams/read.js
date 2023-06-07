@@ -1,5 +1,20 @@
+import fs from 'fs';
+import path from 'path';
+
+const __dirname = new URL('.', import.meta.url).pathname.slice(1);
+const filename = path.join(__dirname, 'files/fileToRead.txt');
+
 const read = async () => {
-    // Write your code here 
+    const readableStream = fs.createReadStream(filename);
+
+    readableStream.addListener('data', (chunk) => {
+        process.stdout._write(`File content:\n " ${chunk} "`);
+    });
+
+    readableStream.addListener('error', (error) => {
+        console.log(`error: ${error.message}`);
+    })
+
 };
 
 await read();
