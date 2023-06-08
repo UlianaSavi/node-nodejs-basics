@@ -10,7 +10,7 @@ const compress = async () => {
     const readableStream = fs.createReadStream(fileToCompress);
     readableStream
         .pipe(createGzip())
-        .pipe(fs.createWriteStream(`${ fileToCompress.slice(0, fileToCompress.length - 4) }.${ filExtension }`))
+        .pipe(fs.createWriteStream(`${__dirname}files/archive.${ filExtension }`))
         .on('finish', () => {
             console.log(`Compression process done: ${ fileToCompress }`)
         })
