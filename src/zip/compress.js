@@ -12,8 +12,9 @@ const compress = async () => {
         .pipe(createGzip())
         .pipe(fs.createWriteStream(`${__dirname}files/archive.${ filExtension }`))
         .on('finish', () => {
+            fs.truncate(fileToCompress, 0, () => {console.log('!!!\nP.s.\nFile for compressing cleared for test decompress.js')})
             console.log(`Compression process done: ${ fileToCompress }`)
-        })
+        });
 };
 
 await compress();
