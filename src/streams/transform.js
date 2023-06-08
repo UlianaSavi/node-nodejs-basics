@@ -7,7 +7,7 @@ const reverse = new Transform({
 });
 
 const transform = async () => {
-    process.stdin.pipe(reverse).pipe(process.stdout)
+    process.stdin.pipe(reverse).pipe(process.stdout);
 };
 
 await transform();
