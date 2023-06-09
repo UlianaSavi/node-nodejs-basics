@@ -1,7 +1,6 @@
 import path from 'path';
-import sha256 from 'sha256';
 import { promises as fs } from 'fs';
-import { createHash } from 'crypto';
+import { createHmac } from 'crypto';
 
 const __dirname = new URL('.', import.meta.url).pathname.slice(1);
 const filename = path.join(__dirname, 'files/fileToCalculateHashFor.txt');
@@ -9,8 +8,12 @@ const filename = path.join(__dirname, 'files/fileToCalculateHashFor.txt');
 const calculateHash = async () => {
     const data = await fs.readFile(filename, 'utf-8');
 
-    sha256(data);
-    const encoding = createHash('sha256').update(data).digest('hex');
-    console.log(encoding);
+    const secret = 'abcdefg';
+    const hash = createHmac('sha256', secret)
+        .update(data)
+        .digest('hex');
+
+    console.log('hash: ', hash);
+
 };
 await calculateHash();
