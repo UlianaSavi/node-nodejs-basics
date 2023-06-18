@@ -5,3 +5,8 @@
 3. Deploy: -
 4. Done 12.06.2023 / deadline 20.06.2023
 5. Score: 206/206
+
+## You can contact me here:
+
+- tg - `https://t.me/ThelightUu`
+- discord - `UlianaSavi#2769`
